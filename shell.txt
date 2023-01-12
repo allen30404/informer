@@ -1,0 +1,29 @@
+
+------------------------------------案場1~9-------------------------------------------------
+#0-24點資料都丟進去訓練(資料使用0-24點)
+python -u main_informer.py --model informer --data Dataset_Energy_0_24_predict_0_24 --root_path ./data/Data_0_24/ --features MS --seq_len 24 --label_len 12 --pred_len 1 --e_layers 2 --d_layers 1 --attn prob --des 'Exp' --itr 1 --gpu 1 --train_epochs 100 --patience 5 --feature_num 8 --batch_size 16 --data_path place_2.csv
+#只預測6-18點資料都丟進去訓練(資料用0-24點)
+python -u main_informer.py --model informer --data Dataset_Energy_0_24_predict_6_18 --root_path ./data/Data_0_24/ --features MS --seq_len 24 --label_len 12 --pred_len 1 --e_layers 2 --d_layers 1 --attn prob --des 'Exp' --itr 1 --gpu 1 --train_epochs 100 --patience 5 --feature_num 8 --batch_size 16 --data_path place_2.csv
+#只預測6-18點資料都丟進去訓練(資料用6-18點)
+python -u main_informer.py --model informer --data Dataset_Energy_6_18_predict_6_18 --root_path ./data/Data_6_18/ --features MS --seq_len 24 --label_len 12 --pred_len 1 --e_layers 2 --d_layers 1 --attn prob --des 'Exp' --itr 1 --gpu 1 --train_epochs 100 --patience 5 --feature_num 8 --batch_size 16 --data_path place_2.csv
+
+------------------------------------案場2-5(雲林案場)-------------------------------------------------
+python -u main_informer.py --model informer --data Dataset_Energy_0_24_yunlin_predict_6_18 --root_path ./data/Data_0_24/ --features MS --seq_len 24 --label_len 12 --pred_len 1 --e_layers 2 --d_layers 1 --attn prob --des 'Exp' --itr 1 --gpu 1 --train_epochs 100 --patience 5 --feature_num 8 --batch_size 16 --data_path combine_data_yunlin.csv
+
+------------------------------------案場7,9(價易案場)-------------------------------------------------
+python -u main_informer.py --model informer --data Dataset_Energy_0_24_chiayi_predict_6_18 --root_path ./data/Data_0_24/ --features MS --seq_len 24 --label_len 12 --pred_len 1 --e_layers 2 --d_layers 1 --attn prob --des 'Exp' --itr 1 --gpu 1 --train_epochs 100 --patience 5 --feature_num 8 --batch_size 16 --data_path combine_data_chiayi.csv
+
+--------------------------------------北部案場-----------------------------------------------
+#只預測北部6-18點資料都丟進去訓練(資料用0-24點)
+python -u main_informer.py --model informer --data Dataset_Energy_Morning_North_0_24_predict_6_18 --root_path ./data/Data_0_24/ --features MS --seq_len 24 --label_len 24 --pred_len 1 --e_layers 3 --d_layers 1 --attn prob --des 'Exp' --itr 1 --gpu 1 --train_epochs 100 --patience 5 --feature_num 6 --batch_size 16 --data_path site_north_complete.csv
+#只預測6-18點資料都丟進去訓練(資料用6-18點)
+python -u main_informer.py --model informer --data Dataset_Energy_Morning_North_6_18_predict_6_18 --root_path ./data/Data_6_18/ --features MS --seq_len 24 --label_len 24 --pred_len 1 --e_layers 3 --d_layers 1 --attn prob --des 'Exp' --itr 1 --gpu 1 --train_epochs 100 --patience 5 --feature_num 8 --batch_size 16 --data_path site_north_complete.csv
+
+
+
+
+---------------------------------------data_process-----------------------------------------
+#0-24資料
+python data_process.py --data_after_process_path ../data/Data_0_24/ --data_start 0 --data_end 23
+#6-18資料
+python data_process.py --data_after_process_path ../data/Data_6_18/ --data_start 5 --data_end 17

@@ -1,0 +1,7 @@
+#忽略model參數檔案
+/checkpoints/*
+
+#忽略result
+/results/*
+
+/data/*
